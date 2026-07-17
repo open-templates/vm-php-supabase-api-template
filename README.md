@@ -1,36 +1,39 @@
-# github-repo-template
+# vm-php-supabase-api-template
 
-A **minimal GitHub repository template** from [@open-templates](https://github.com/open-templates). Community docs, Dependabot, CODEOWNERS, and issue/PR scaffolding — no application code until you add it.
+**Docker + PHP 8.3 (Slim)** Supabase Auth API from [@open-templates](https://github.com/open-templates). Same JSON contract as `cf-*-supabase-api-template` workers: `GET /health`, `GET /me`. Pairs with any **Supabase Auth** frontend (`react-`, `vue-`, `svelte-`, `astro-supabase-auth-template`).
+
+Deploy on a VM with **Docker Compose**, optional **Terraform + cloud-init** on Oracle Cloud. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## Quick start
 
-1. Click **Use this template** on GitHub.
-2. Clone and copy personalized files from [`templates/`](templates/):
+1. **Use this template** on GitHub, then clone your repo.
+2. Personalize: `./scripts/init-from-template.sh` (optional).
+3. Configure and run:
 
 ```bash
-git clone https://github.com/open-templates/github-repo-template.git my-new-repo
-cd my-new-repo
-./scripts/init-from-template.sh
+cp .env.example .env
+# SUPABASE_URL, SUPABASE_ANON_KEY, ALLOWED_ORIGINS
+docker compose up -d
+curl -s http://localhost:8080/health
 ```
 
-The hosted repo keeps **@open-templates** branding in root markdown until you run init. See [docs/init-from-template.md](docs/init-from-template.md).
+Default API base URL for frontends: `http://localhost:8080` (`VITE_API_BASE_URL`).
 
-### GitHub automation (included)
+## Documentation
 
-| File | Purpose |
-|------|---------|
-| [`.github/dependabot.yml`](.github/dependabot.yml) | Dependency update PRs |
-| [`.github/workflows/dependabot-signature.yml`](.github/workflows/dependabot-signature.yml) | `Co-authored-by` via `github.repository_owner` at runtime |
-| [`.github/CODEOWNERS`](.github/CODEOWNERS) | Review ownership |
+| Doc | Purpose |
+|-----|---------|
+| [INSTRUCTIONS.md](INSTRUCTIONS.md) | Adopter + agent guide |
+| [index.md](index.md) | OKF feature index |
+| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Docker, Oracle Terraform, manual VM |
+| [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) | Supabase project + OAuth |
 
-Full reference: **[docs/README.md](docs/README.md)** · [INSTRUCTIONS.md](INSTRUCTIONS.md) · [index.md](index.md) · [.agents/skills/](.agents/skills/)
+## Stack
+
+- PHP 8.3, Slim 4, Guzzle → Supabase `auth/v1/user`
+- Nginx + PHP-FPM (Compose)
+- Terraform (Oracle) + cloud-init bootstrap
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
-
----
-
-## Repository documents
-
-**README** | [INSTRUCTIONS](INSTRUCTIONS.md) | [CHANGELOG](CHANGELOG.md) | [CONTRIBUTING](CONTRIBUTING.md) | [SECURITY](SECURITY.md) | [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md)
+MIT

@@ -1,0 +1,28 @@
+{
+  "name": "open-templates/vm-php-supabase-api",
+  "description": "Supabase Auth API (GET /health, GET /me) for Docker / VM deployment",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": "^8.3",
+    "slim/slim": "^4.14",
+    "slim/psr7": "^1.7",
+    "guzzlehttp/guzzle": "^7.9",
+    "vlucas/phpdotenv": "^5.6"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "scripts": {
+    "start": "php -S localhost:8080 -t public public/index.php",
+    "analyse": "phpstan analyse src --level=5"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

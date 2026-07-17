@@ -1,0 +1,33 @@
+---
+description: vm-php-supabase-api-template — Docker PHP API conventions
+alwaysApply: true
+---
+
+# vm-php-supabase-api-template
+
+PHP Slim API for Supabase Auth. Not a Cloudflare Worker.
+
+## Read order
+
+`INSTRUCTIONS.md` → `index.md` → `.agents/skills/index.md`
+
+## API contract
+
+- `GET /health` — public
+- `GET /me` — Bearer Supabase access token
+
+Same JSON shape as `cf-hono-supabase-api-template`. Default local URL: `http://localhost:8080`.
+
+## Code layout
+
+- `app/src/` — routes, middleware, Supabase client
+- `docker/` — Dockerfile + nginx
+- `infrastructure/` — Terraform (Oracle) + cloud-init
+
+## Deployment
+
+See `docs/DEPLOYMENT.md`. Prefer Docker Compose; Terraform for Oracle Always Free.
+
+## Pairing
+
+Any auth-pack frontend; set `VITE_API_BASE_URL` and `ALLOWED_ORIGINS`.

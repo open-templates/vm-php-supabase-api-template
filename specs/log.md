@@ -1,5 +1,5 @@
 # Directory Update Log
 
-## 2026-07-15
+## 2026-07-17
 
-* **Creation**: OKF v0.1 specs bundle for github-repo-template.
+* **Initialization**: PHP 8.3 Slim API with Docker Compose, Oracle Terraform + cloud-init, `GET /health` and `GET /me` matching worker templates.

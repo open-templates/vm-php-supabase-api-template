@@ -1,0 +1,7 @@
+compartment_id      = ""
+region              = "eu-frankfurt-1"
+availability_domain = ""
+subnet_id           = ""
+ssh_public_key      = "ssh-ed25519 AAAA... user@host"
+git_repo_url        = "https://github.com/your-org/your-php-api.git"
+git_branch          = "main"

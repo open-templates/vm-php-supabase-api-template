@@ -2,19 +2,23 @@
 okf_version: "0.1"
 ---
 
-# github-repo-template skills
+# vm-php-supabase-api-template skills
 
 ## Shared (synced)
 
-Optional cross-template references: [auth/](shared/auth/), [supabase/](shared/supabase/)
+* [auth/](shared/auth/)
+* [supabase/](shared/supabase/)
 
 ## Local modules
 
-* [init-from-template](modules/init-from-template.md) - personalization script
+* [docker-runtime](modules/docker-runtime.md)
+* [oracle-terraform](modules/oracle-terraform.md)
+* [json-responses](modules/json-responses.md)
+* [auth-middleware](modules/auth-middleware.md)
 
 ## Agent skills
 
-Cursor catalog: [README.md](README.md) — procedural guides (add `SKILL.md` packs when you adopt a stack).
+[README.md](README.md)
 
 ## Specs
 

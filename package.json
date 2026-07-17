@@ -1,0 +1,36 @@
+{
+  "name": "vm-php-supabase-api-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Docker + PHP Supabase Auth API (GET /health, GET /me). Pairs with Supabase Auth SPA templates. Oracle Terraform optional.",
+  "type": "module",
+  "scripts": {
+    "init": "node scripts/init-from-template.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-templates/vm-php-supabase-api-template.git"
+  },
+  "homepage": "https://github.com/open-templates/vm-php-supabase-api-template#readme",
+  "bugs": {
+    "url": "https://github.com/open-templates/vm-php-supabase-api-template/issues"
+  },
+  "keywords": [
+    "vm-php-supabase-api-template",
+    "supabase",
+    "docker",
+    "terraform",
+    "oracle-cloud",
+    "slim"
+  ],
+  "author": {
+    "name": "@xarlizard",
+    "email": "38315638+xarlizard@users.noreply.github.com",
+    "url": "https://github.com/xarlizard"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "bun@1.2.15"
+}

@@ -1,20 +1,26 @@
-# Instructions — repo-display-name
+# Agent & developer instructions — repo-name
 
-Guide for maintainers and coding agents working on **owner-username/repo-name**.
+Minimal **Hono + Supabase** Cloudflare Worker API. Pairs with [paired-repo-name](https://github.com/owner-username/paired-repo-name) for the React frontend.
 
-## First steps
+## What ships out of the box
 
-1. Customize [README.md](README.md) for your stack.
-2. Edit [`.github/dependabot.yml`](.github/dependabot.yml) (ecosystem, directory).
-3. Never commit secrets; use `.env.example` only.
-4. Batch [CHANGELOG.md](CHANGELOG.md) updates per release (conventional commits).
+| Endpoint | Auth | Description |
+|----------|------|-------------|
+| `GET /health` | Public | Liveness probe |
+| `GET /me` | Bearer JWT | Authenticated user profile |
 
-## CHANGELOG workflow
+Details: [`index.md`](index.md)
 
-Use `feat:`, `fix:`, `docs:` prefixes. Group changes per release — see [Keep a Changelog](https://keepachangelog.com/).
+## Local development
 
----
+```bash
+npm install
+cp .env.example .dev.vars
+npm run dev
+```
 
-## Repository documents
+## Deploy
 
-[README](README.md) | **INSTRUCTIONS** | [CHANGELOG](CHANGELOG.md) | [CONTRIBUTING](CONTRIBUTING.md) | [SECURITY](SECURITY.md) | [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md)
+See [`CLOUDFLARE_SETUP.md`](CLOUDFLARE_SETUP.md) for Wrangler login, secrets, and custom domains.
+
+Update `wrangler.toml` routes before production deploy.

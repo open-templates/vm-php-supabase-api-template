@@ -1,9 +1,15 @@
 ---
 type: Feature
 title: Purpose
-description: Minimal GitHub repo template with community docs and automation, no app code.
-tags: [github, template]
-timestamp: 2026-07-15T00:00:00Z
+description: Goals of the PHP Docker API and frontend pairing.
+tags: [backend, php, docker, supabase]
+timestamp: 2026-07-17T00:00:00Z
 ---
 
-Community docs, Dependabot, CODEOWNERS, and issue/PR scaffolding from [@open-templates](https://github.com/open-templates). Application code is added by adopters after init.
+# Purpose
+
+Provide a **VM-friendly** Supabase Auth API when Cloudflare Workers are not suitable. Implements the same `/health` and `/me` contract as `cf-hono-supabase-api-template`.
+
+Pairs with any auth-pack frontend (`react-`, `vue-`, `svelte-`, `astro-supabase-auth-template`). See [06 — Frontend pairing](06-frontend-pairing.md).
+
+Deployment: Docker Compose locally; Oracle Terraform + cloud-init for production ([08 — Docker runtime](08-docker-runtime.md), [09 — Oracle Terraform](09-oracle-terraform.md)).

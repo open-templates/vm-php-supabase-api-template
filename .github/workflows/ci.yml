@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Compose file
+        run: docker compose config
+
+      - name: Build images
+        run: docker compose build
+
+      - name: Smoke test /health
+        run: |
+          cp .env.example .env
+          docker compose up -d
+          sleep 5
+          curl -fsS http://localhost:8080/health | grep -q '"success":true'
+          docker compose down
