@@ -1,0 +1,11 @@
+# Optional local overrides (copy to docker-compose.override.yml).
+# Compose merges override.yml automatically when present.
+#
+# Bind-mounting app/ replaces the image vendor/ directory; run:
+#   docker compose run --rm php composer install
+# after dependency changes when using this override.
+
+services:
+  php:
+    volumes:
+      - ./app:/var/www/html

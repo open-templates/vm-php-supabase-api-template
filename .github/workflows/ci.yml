@@ -23,7 +23,15 @@ jobs:
 
       - name: Smoke test /health
         run: |
+          set -euo pipefail
           docker compose up -d
-          sleep 5
-          curl -fsS http://localhost:8080/health | grep -q '"success":true'
-          docker compose down
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:8080/health | grep -q '"success":true'; then
+              docker compose down
+              exit 0
+            fi
+            sleep 2
+          done
+          docker compose ps
+          docker compose logs php nginx
+          exit 1

@@ -14,7 +14,8 @@ Host :8080 → nginx:80 → php-fpm:9000 → app/public/index.php
 
 Files:
 
-- `docker-compose.yml` — `php` + `nginx` services
+- `docker-compose.yml` — `php` + `nginx` services (PHP image includes `vendor/` from build)
+- `docker-compose.override.yml.example` — optional bind mount for local PHP edits
 - `docker/Dockerfile` — PHP 8.3-FPM, Composer vendor install
 - `docker/nginx.conf` — front controller to `index.php`
 
