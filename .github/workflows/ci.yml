@@ -26,7 +26,8 @@ jobs:
           set -euo pipefail
           docker compose up -d
           for i in $(seq 1 30); do
-            if curl -fsS http://localhost:8080/health | grep -q '"success":true'; then
+            if curl -fsS http://localhost:8080/health -o /tmp/health.json \
+              && python3 -c "import json; d=json.load(open('/tmp/health.json')); assert d.get('success') is True"; then
               docker compose down
               exit 0
             fi
@@ -34,4 +35,8 @@ jobs:
           done
           docker compose ps
           docker compose logs php nginx
+          echo "--- /health response body ---"
+          curl -sS http://localhost:8080/health || true
+          echo
+          docker compose down
           exit 1

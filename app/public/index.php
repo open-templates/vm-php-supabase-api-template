@@ -7,9 +7,12 @@ use Dotenv\Dotenv;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-$root = dirname(__DIR__, 2);
-if (is_file($root . '/.env')) {
-    Dotenv::createImmutable($root)->safeLoad();
+$appRoot = dirname(__DIR__);
+foreach ([$appRoot, dirname($appRoot)] as $envRoot) {
+    if (is_file($envRoot . '/.env')) {
+        Dotenv::createImmutable($envRoot)->safeLoad();
+        break;
+    }
 }
 
 $app = AppFactory::create();
