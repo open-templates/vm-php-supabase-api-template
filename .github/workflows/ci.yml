@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Prepare environment file
+        run: cp .env.example .env
+
       - name: Validate Compose file
         run: docker compose config
 
@@ -20,7 +23,6 @@ jobs:
 
       - name: Smoke test /health
         run: |
-          cp .env.example .env
           docker compose up -d
           sleep 5
           curl -fsS http://localhost:8080/health | grep -q '"success":true'
