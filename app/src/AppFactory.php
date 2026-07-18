@@ -27,9 +27,8 @@ final class AppFactory
         (new HealthRoutes($responder))->register($app);
 
         $app->group('', function ($group) use ($responder) {
-            $group->add(new AuthMiddleware($responder));
             (new MeRoutes($responder))->register($group);
-        });
+        })->add(new AuthMiddleware($responder));
 
         $app->map(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], '/{routes:.+}', function ($request, $response) use ($responder) {
             return $responder->error($response, 'Not Found', 'NOT_FOUND', 404);
